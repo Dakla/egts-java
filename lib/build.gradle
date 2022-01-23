@@ -11,6 +11,15 @@ plugins {
     id 'java-library'
 }
 
+version = '0.0.5'
+
+tasks.named('jar') {
+    manifest {
+        attributes('Implementation-Title': project.name,
+                'Implementation-Version': project.version)
+    }
+}
+
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()

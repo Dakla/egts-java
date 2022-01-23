@@ -5,6 +5,7 @@ import org.apache.commons.lang3.ArrayUtils;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
@@ -38,6 +39,8 @@ public class ServiceDataRecord implements PackageData {
     }
 
     public ServiceDataRecord() {
+        Class<?> aClass = getClass();
+        Object cast = aClass.cast(this);
     }
 
     @Override
