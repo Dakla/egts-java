@@ -33,7 +33,7 @@ public class ServiceDataRecord implements PackageData {
     protected Byte recipientServiceType = 2;
     protected List<PackageData> recordDataSet = new ArrayList<>();
 
-    public ServiceDataRecord(double lat, double lng, int speed, int dir, int objectId, Date date, boolean isMove) {
+    public ServiceDataRecord(double lat, double lng, double speed, int dir, int objectId, Date date, boolean isMove) {
         objectIdentifier = objectId;
         recordDataSet.add(new RecordData(lat, lng, speed, dir, date, isMove));
     }

@@ -5,7 +5,7 @@ import java.util.Date;
 public class EgtsMessage {
     public double lat;
     public double lng;
-    public int speed;
+    public double speed;
     public int dir;
     public int objectId;
     public Date date;

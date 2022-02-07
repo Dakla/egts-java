@@ -12,7 +12,7 @@ public class RecordData implements PackageData {
     protected Short subRecordLength = 0;
     protected PackageData subRecordData;
 
-    public RecordData(double lat, double lng, int speed, int dir, Date date, boolean isMove) {
+    public RecordData(double lat, double lng, double speed, int dir, Date date, boolean isMove) {
         subRecordData = new SubRecordData(lat, lng, speed, dir, date, isMove);
     }
 

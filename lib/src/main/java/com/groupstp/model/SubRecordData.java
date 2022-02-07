@@ -31,7 +31,7 @@ public class SubRecordData implements PackageData {
     protected Integer directionHighestBit;
     //    определяет высоту относительно уровня моря
     protected Integer altitudeSign = 0;
-    protected Integer speed;
+    protected double speed;
     protected Integer direction;
     protected Long odometer = 1L;
     //    битовые флаги, определяют состояние основных дискретных входов
@@ -43,7 +43,7 @@ public class SubRecordData implements PackageData {
     //    данные, характеризующие источник (событие) из поля SRC необязательно
     protected Integer sourceData;
 
-    public SubRecordData(double lat, double lng, int speed, int dir, Date date, boolean isMove) {
+    public SubRecordData(double lat, double lng, double speed, int dir, Date date, boolean isMove) {
         this.latitude = lat;
         this.longitude = lng;
         this.speed = speed;
@@ -79,12 +79,13 @@ public class SubRecordData implements PackageData {
 
         outputStream.write(Integer.parseInt(alte + lohs + lahs + mv + bb + cs + fix + vld, 2));
 
-        outputStream.write(speed & ((1 << 14) - 1));
+            int intSpeed = (int) (speed * 10);
+            outputStream.write(ByteBuffer.allocate(2).order(ByteOrder.LITTLE_ENDIAN).putShort((short) (intSpeed & ((1 << 14) - 1))).array());
 
         outputStream.write(direction);
 
         byte[] odometerTmp = ByteBuffer.allocate(8).order(ByteOrder.LITTLE_ENDIAN).putLong(odometer).array();
-        byte[] odometerArray = new byte[4];
+        byte[] odometerArray = new byte[3];
         System.arraycopy(odometerTmp, 0, odometerArray, 0, 3);
         outputStream.write(odometerArray);
         outputStream.write(digitalInputs);

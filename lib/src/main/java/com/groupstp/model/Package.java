@@ -35,7 +35,7 @@ public class Package implements PackageData {
         this.packetType = packetType;
     }
 
-    public Package(double lat, double lng, int speed, int dir, int objectId, Date date, boolean isMove, short packetId) {
+    public Package(double lat, double lng, double speed, int dir, int objectId, Date date, boolean isMove, short packetId) {
         this.packetType = 1;
         this.packetIdentifier = packetId;
         servicesFrameData.add(new ServiceDataRecord(lat, lng, speed, dir, objectId, date, isMove));
